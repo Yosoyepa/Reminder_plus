@@ -1,8 +1,11 @@
+from django.db import models
 from django.shortcuts import render, redirect
-from .models import Notes
+from .models import Notes, Task
 from .forms import NotesForm
 from django.contrib import messages
+from django.views.generic.list import ListView
 # Create your views here.
+
 
 
 def index(request):
@@ -44,3 +47,8 @@ def search_page(request):
         # if notes is None:
         #     messages.info(request, "la nota no se ha encontrado")
         return render(request, "search.html", {"notes": notes})
+
+## Clases:
+
+class TaskList(ListView):
+    model = Task
